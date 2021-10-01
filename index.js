@@ -62,11 +62,18 @@ function busqueda (route){
 function searchForLink (fileMD){
   //if (path.extname(fileMD) === '.md' || path.extname(fileMD) === '.markdown'){
     console.log(fileMD);
-    const expresionReg = /\[[\w]{1,}\]\(https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*\)/gi
+    // \[([a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*)\]
+   
+    const expresionReg = /\[([-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+( [-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+)*)\]\(https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*\)/gi
     fs.readFile(fileMD, 'utf8', function(err, file){
+      let links
       if(err){ console.log(err);}
        else{ //console.log(file) 
-        console.log(file.match(expresionReg));
+        if(file.match(expresionReg)){
+          links = file.match(expresionReg);
+          console.log(file.match(expresionReg));
+        }
+        console.log(links.length);
       }//fin del else
     })
   //}

@@ -1,14 +1,8 @@
-const searchFiles = require('./searchFiles.js')
 const fs = require('fs');
 const path = require('path');
 
-const files = searchFiles(process.argv[2], []);
-
-function searchForLink (files){
-
-    files.forEach(fileMD => {
-        console.log('-----------------------------------------------------------------'+fileMD);
-        
+function searchForLinks (fileMD){
+  console.log('-----------------------------------------------------------------'+fileMD);
         const expresionReg = /\[([-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+( [-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+)*)\]\(https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*\)/gi
         fs.readFile(fileMD, 'utf8', function(err, file){
           let links =[];
@@ -27,6 +21,7 @@ function searchForLink (files){
               })
             }//fin del else
         })
-    });
    
-}
+}//final de la funcion
+
+exports.searchForLinks = searchForLinks;

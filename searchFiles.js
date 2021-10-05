@@ -1,9 +1,10 @@
+const links = require('./searchForLinks.js')
 const fs = require('fs');
 const path = require('path');
 
-const route = process.argv[2];//__dirname; // la ruta absoluta de donde estoy 
+// const route = process.argv[2];//__dirname; // la ruta absoluta de donde estoy 
 
-function searchFiles (route, allLinks){
+function searchFiles (route, callback){
   // let allLinks = [];
   const absolute = path.resolve(route);
   fs.readdir(absolute, function (err, files){
@@ -13,18 +14,17 @@ function searchFiles (route, allLinks){
         if(err){ console.log(err) }
         else
         if(element.isDirectory()){
-          searchFiles(newroute, allLinks);
+          searchFiles(newroute, callback);
         }
         else{
           if (path.extname(elem) === '.md' || path.extname(elem) === '.markdown'){
-            allLinks.push(newroute);
-            console.log(allLinks);
+            callback(null,newroute);
           }
         }
       })
-  })
-})
- return allLinks;
+    })
+ })
+ return callback;
 }
 
 exports.searchFiles = searchFiles;

@@ -1,30 +1,25 @@
-const links = require('./searchForLinks.js')
+
 const fs = require('fs');
 const path = require('path');
+const { findSourceMap } = require('module');
 
-// const route = process.argv[2];//__dirname; // la ruta absoluta de donde estoy 
 
-function searchFiles (route, callback){
-  // let allLinks = [];
+let allLinks = [];
+function searchFiles (route){
   const absolute = path.resolve(route);
-  fs.readdir(absolute, function (err, files){
+  const files = fs.readdirSync(absolute);
     files.forEach((elem)=>{
       const newroute = path.join(absolute,elem);
-      fs.lstat(newroute, function(err, element){
-        if(err){ console.log(err) }
-        else
-        if(element.isDirectory()){
-          searchFiles(newroute, callback);
+      if(fs.statSync(newroute).isDirectory()){
+        searchFiles(newroute);
+      }
+      else{
+        if (path.extname(elem) === '.md' || path.extname(elem) === '.markdown'){
+          allLinks.push(newroute);
         }
-        else{
-          if (path.extname(elem) === '.md' || path.extname(elem) === '.markdown'){
-            callback(null,newroute);
-          }
-        }
-      })
+      }
     })
- })
- return callback;
+ return allLinks;
 }
 
 exports.searchFiles = searchFiles;

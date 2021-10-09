@@ -11,7 +11,6 @@ function searchForLinks (files){
         //console.log(file) 
         if(file.match(expresionReg)){
           links = file.match(expresionReg);
-          // console.log(file.match(expresionReg));
         }
           //console.log(links.length);
         links.forEach((texLink)=>{
@@ -23,9 +22,9 @@ function searchForLinks (files){
           }
            // console.log('TEXTO: ' + arrayTexLink[0] + ' URL: ' + arrayTexLink[1]);
           arrayLinksMD.push({
-            'file': fileMD,
+            'href':arrayTexLink[1],
             'text': arrayTexLink[0],
-            'url':arrayTexLink[1]
+            'file': fileMD
           })
         })      
     });

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 const files = require('./searchFiles.js');
 const links = require('./searchForLinks.js');
-const validate = require('./validate.js')
+const validate = require('./validate.js');
+const stats = require('./stats.js');
 const fs = require('fs');
 const path = require('path');
 const readline = require("readline");
@@ -13,15 +14,16 @@ const prueba = files.searchFiles(route);
 //console.log(prueba);
 const fileWithLinks = links.searchForLinks(prueba);
 
+// stats.stats(fileWithLinks);
 // console.log(fileWithLinks);
+// const resValite = validate.validate(fileWithLinks)
+//     .then(res =>{
+//         console.log('PROMISEEEE:')
+//         console.log(res);
+//     })
+//     .catch(err =>{ console.log(err); })
 
-validate.validate(fileWithLinks)
-    .then(res =>{
-        console.log('PROMISEEEE:')
-        console.log(res);
-    })
-    .catch(err =>{ console.log(err); })
-
+console.log( validate.validate(fileWithLinks));
 
 // const mdLinks = require("md-links");
 

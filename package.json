@@ -1,7 +1,4 @@
 {
   "name": "md-links",
-  "version": "0.1.0",
-  "dependencies": {
-    "url-status-code": "^2.0.0"
-  }
+  "version": "0.1.0"
 }

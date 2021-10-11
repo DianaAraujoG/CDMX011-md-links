@@ -1,4 +1,4 @@
-const request = require('request');
+const statusCode =  require('url-status-code');
 
 function validate (allLinks) {
     return new Promise((resolve,reject)=>{
@@ -6,17 +6,20 @@ function validate (allLinks) {
         reject('No hay ningun link');
       }else{
         allLinks.forEach(element => {
-           const newElement = requestFunction(element.href);
+           const newElement = statusFunction(element.href);
            element.status = newElement;
          });
          resolve(Promise.all(allLinks));
       }//FINAL DEL ELSE   
     }) 
 }
-function requestFunction (href){
-    request(href, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log('OK') 
+function statusFunction (href){
+    statusCode(href, function (error, status) {
+        if(error){
+            return(error);
+        }else
+        if (status >= 200 && status <= 299) {
+            console.log('entre')
             return 'OK';
             // element.status = 'OK'
             // Print the google web page.
@@ -27,9 +30,3 @@ function requestFunction (href){
     }) 
 }
 exports.validate = validate;
-
-// request('http://www.google.com', function (error, response, body) {
-//   if (!error && response.statusCode == 200) {
-//     console.log("URL is OK") // Print the google web page.
-//   }
-// })

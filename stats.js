@@ -1,18 +1,25 @@
 
-function stats (allLinks){
-    const links = allLinks.length;
-    const unique = [];
-    const broken = [];
+function stats (allLinks, filesMD){
+    const statsPearFile = filesMD.map((mdFile)=>{
+        console.log(mdFile);
+        const links = [];
+        const unique = [];
+        const broken = [];
 
-    allLinks.forEach(element => {
-        if(unique.includes(element.href)){
-            //continue;
-        }else{
-            unique.push(element.href);
-        }
-    });
-    console.log('Total: ' + links);
-    console.log('Unique: ' + unique.length);
+        allLinks.forEach(element => {
+            if( mdFile == element.file){
+                links.push(element.href)
+                if(unique.includes(element.href)){
+                    //continue;
+                }else{
+                    unique.push(element.href);
+                }
+            }
+        });
+        console.log('Total: ' + links.length);
+        console.log('Unique: ' + unique.length);
+    })
+    
 
 }
 

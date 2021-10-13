@@ -1,7 +1,7 @@
 
-function stats (allLinks, filesMD){
+function stats (allLinks, filesMD, validate){
+    const resultStats = [];
     const statsPearFile = filesMD.map((mdFile)=>{
-        console.log(mdFile);
         const links = [];
         const unique = [];
         const broken = [];
@@ -14,13 +14,26 @@ function stats (allLinks, filesMD){
                 }else{
                     unique.push(element.href);
                 }
+                if(validate){
+                    if(element.txStatus == 'FAIL'){
+                        broken.push(element.href);
+                    }    
+                }
             }
         });
-        console.log('Total: ' + links.length);
-        console.log('Unique: ' + unique.length);
-    })
+        resultStats.push({
+            'file': mdFile,
+            'total': links.length,
+            'unique': unique.length,
+            'broken': broken.length
+        })
+        // console.log(mdFile);
+        // console.log('Total: ' + links.length);
+        // console.log('Unique: ' + unique.length);
+        // console.log('Broken: ' + broken.length);
+    }) // fin del map
     
-
+    return resultStats;
 }
 
 exports.stats = stats;

@@ -1,6 +1,10 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "main": "bin/index.js",
+  "bin": {
+    "md-links": "./bin/index.js"
+  },
   "dependencies": {
     "axios": "^0.22.0"
   }

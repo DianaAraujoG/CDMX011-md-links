@@ -27,10 +27,6 @@ function stats (allLinks, filesMD, validate){
             'unique': unique.length,
             'broken': broken.length
         })
-        // console.log(mdFile);
-        // console.log('Total: ' + links.length);
-        // console.log('Unique: ' + unique.length);
-        // console.log('Broken: ' + broken.length);
     }) // fin del map
     
     return resultStats;

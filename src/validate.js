@@ -1,4 +1,10 @@
-const axios = require('axios');
+const axios = require('axios').default;
+
+const mock = [{
+  href: 'https://nodejs.org/api/http.html#http_http_get_options_callback',
+  text: 'Node.js http.get - Documentación oficial',
+  file: 'C:\\Cursos\\GitHub\\CDMX011-md-links\\Prueba\\README.md'
+}]
 
 function validate (allLinks){
   return new Promise((resolve,reject)=>{
@@ -24,10 +30,11 @@ async function axiosStatus (link){
     //console.log(error)
     return({
       ...link,
-      'status': error.response.status,
+      // 'status': error.response.status,
       'txStatus': 'FAIL'
     });
   })
 }
+//console.log(axiosStatus(mock));
 
 exports.validate = validate;

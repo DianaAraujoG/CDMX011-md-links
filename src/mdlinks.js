@@ -1,4 +1,4 @@
-const files = require('./searchFiles');
+const files = require('./searchFiles.js');
 const links = require('./searchForLinks.js');
 const validate = require('./validate.js');
 const stats = require('./stats.js');

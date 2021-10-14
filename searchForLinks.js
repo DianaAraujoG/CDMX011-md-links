@@ -3,9 +3,9 @@ const path = require('path');
 
 let arrayLinksMD = [];
 function searchForLinks (files){
-    files.forEach(fileMD => {
+    files.forEach(fileMD => {                                                                                                                              //(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9(@:%_\+.~#?&//=]*)                     
         console.log('-----------------------------------------------------------------'+fileMD);
-        const expresionReg = /\[([-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+( [-a-zA-ZÀ-ÿ\u00f1\u00d10-9!"#$%&'(*+,)\-./:{;<|=>}?@[_`]+)*)\]\(https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*\)/gi
+        const expresionReg = /\[([^\]]+)\]\(https?:\/\/(www\.)?[\w\-]+(\.[\w\-]+)+[/#?]?.*\)/gi
         const file = fs.readFileSync(fileMD, 'utf8')
         let links =[];
         //console.log(file) 

@@ -27,10 +27,9 @@ async function axiosStatus (link){
   })
   .catch(function (error) {
     // handle error
-    //console.log(error)
     return({
       ...link,
-      // 'status': error.response.status,
+      'status': 404,
       'txStatus': 'FAIL'
     });
   })

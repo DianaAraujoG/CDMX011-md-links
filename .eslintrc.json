@@ -8,8 +8,18 @@
         "airbnb-base"
     ],
     "parserOptions": {
-        "ecmaVersion": 13
+        "ecmaVersion": 12
     },
     "rules": {
+        "linebreak-style": 0,
+        "prefer-destructuring": 0,
+        "import/extensions": 0,
+        "import/prefer-default-export": 0,
+        "eqeqeq": "off",
+        "no-mixed-operators": "off",
+        "no-console": "off",
+        "no-case-declarations": "off",
+        "no-inner-declarations": "off",
+        "no-return-await": "off"
     }
 }

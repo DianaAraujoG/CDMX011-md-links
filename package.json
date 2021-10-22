@@ -12,11 +12,12 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.25.2"
+    "eslint-plugin-import": "^2.25.2",
+    "jest": "^27.3.1"
   },
   "scripts": {
     "test": "jest --coverage",
     "pretest": "npm run eslint",
-    "eslint" : "eslint --ext .js src/ bin/ test/"
-    }
+    "eslint": "eslint --ext .js src/ bin/ test/"
+  }
 }

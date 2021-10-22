@@ -20,13 +20,13 @@ function mdLinks(path, options) {
           .catch((err) => { console.log(err); });
         break;
       case 'stast':
-        const statsFn = stats.stats(fileWithLinks, filesMD, false);
+        const statsFn = stats.stats(fileWithLinks, false);
         resolve(statsFn);
         break;
       case 'both': {
         async function fn1() {
           const linksV = await validate.validate(fileWithLinks);
-          const statsFn2 = stats.stats(linksV, filesMD, true);
+          const statsFn2 = stats.stats(linksV, true);
           resolve(statsFn2);
         }
         fn1();

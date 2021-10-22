@@ -45,8 +45,6 @@ if (op1 == '--stats' && !op2) {
   mdLinks.f(path, 'stast')
     .then((res) => {
       res.forEach((stat) => {
-        const file = pathLi.parse(stat.file).base;
-        console.log(`-------${chalk.bold.green(file)}`);
         console.log(chalk.magenta('Total: ') + stat.total);
         console.log(chalk.magenta('Unique: ') + stat.unique);
       });
@@ -57,8 +55,6 @@ if (op1 == '--stats' && op2 == '--validate' || op1 == '--validate' && op2 == '--
   mdLinks.f(path, 'both')
     .then((res) => {
       res.forEach((stat) => {
-        const file = pathLi.parse(stat.file).base;
-        console.log(`-------${chalk.bold.green(file)}`);
         console.log(chalk.magenta('Total: ') + stat.total);
         console.log(chalk.magenta('Unique: ') + stat.unique);
         console.log(chalk.magenta('Broken: ') + stat.broken);

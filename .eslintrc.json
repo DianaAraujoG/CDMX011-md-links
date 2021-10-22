@@ -20,6 +20,8 @@
         "no-console": "off",
         "no-case-declarations": "off",
         "no-inner-declarations": "off",
-        "no-return-await": "off"
+        "no-return-await": "off",
+        "no-param-reassign": "off",
+        "no-useless-escape": "off"
     }
 }

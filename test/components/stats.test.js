@@ -8,12 +8,10 @@ describe('Stats', () => {
   });
   it('should be return empty array.', () => {
     const statsE = stast.stats(mdlinks);
-    console.log(statsE);
     expect(statsE).toEqual([{ total: 3, unique: 3, broken: 0 }]);
   });
   it('should be return empty array.', () => {
     const statsE = stast.stats(mdlinksVa, true);
-    console.log(statsE);
     expect(statsE).toEqual([{ total: 4, unique: 3, broken: 1 }]);
   });
 });
